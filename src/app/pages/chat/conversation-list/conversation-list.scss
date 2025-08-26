@@ -1,0 +1,47 @@
+.conversation-list {
+  padding: 1rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .empty {
+    color: gray;
+    font-style: italic;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    .convo-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      background: #fafafa;
+      cursor: pointer;
+
+      .participants {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .last-message {
+        color: #333;
+        margin-bottom: 0.25rem;
+      }
+
+      .time {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+  }
+}

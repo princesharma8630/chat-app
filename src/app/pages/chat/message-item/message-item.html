@@ -1,0 +1,5 @@
+<div class="message-item" [ngClass]="{ 'own-message': isOwnMessage }">
+  <div class="sender">{{ message.sender }}</div>
+  <div class="text">{{ message.text }}</div>
+  <div class="time">{{ message.createdAt | date:'shortTime' }}</div>
+</div>

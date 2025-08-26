@@ -1,0 +1,40 @@
+.message-item {
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 5px 0;
+  max-width: 70%;
+  word-wrap: break-word;
+
+  .sender {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .time {
+    font-size: 10px;
+    text-align: right;
+    margin-top: 4px;
+    color: #666;
+  }
+}
+
+.own-message {
+  background: #007bff;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+
+  .sender {
+    color: #ddd;
+  }
+
+  .time {
+    color: #eee;
+  }
+}

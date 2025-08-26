@@ -1,0 +1,21 @@
+<div class="profile-setup">
+  <h2>Profile Setup</h2>
+
+  <form (ngSubmit)="saveProfile()">
+    <!-- Name -->
+    <label>
+      Display Name:
+      <input type="text" [(ngModel)]="displayName" name="displayName" required />
+    </label>
+    <br />
+
+    <!-- Profile Picture -->
+    <label>
+      Profile Picture:
+      <input type="file" (change)="onFileSelected($event)" />
+    </label>
+    <br />
+
+    <button type="submit">Save Profile</button>
+  </form>
+</div>

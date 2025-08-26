@@ -1,0 +1,25 @@
+<div class="conversation-list">
+  <h2>Conversations</h2>
+
+  <!-- agar koi conversation na ho -->
+  <div *ngIf="conversations().length === 0" class="empty">
+    No conversations yet.
+  </div>
+
+  <!-- list of conversations -->
+  <ul>
+    <li *ngFor="let convo of conversations()">
+      <div class="convo-item">
+        <div class="participants">
+          👥 {{ convo.participants.join() || 'Unknown' }}
+        </div>
+        <div class="last-message">
+          💬 {{ convo.lastMessage || 'No messages yet' }}
+        </div>
+        <div class="time">
+          🕒 {{ convo.updatedAt?.toDate() | date:'short' }}
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
