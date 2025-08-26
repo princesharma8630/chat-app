@@ -2,6 +2,12 @@
   
   <aside class="sidebar">
     <app-conversation-list></app-conversation-list>
+     <div class="profile" [routerLink]="['/profile-setup']">
+  <img *ngIf="photoUrl" [src]="photoUrl" alt="Profile" class="profile-img">
+  <span>{{ username }}</span>
+  
+</div>
+   
   </aside>
 
   <main class="main-chat">

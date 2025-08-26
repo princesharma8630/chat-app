@@ -1,0 +1,71 @@
+/* Fullscreen Black Background */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* pure black bg */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login Box */
+.login-container {
+  background: #fff; /* white box */
+  padding: 40px;
+  border-radius: 12px;
+  width: 350px;
+  height: 420px; /* fixed height like Instagram */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center inputs + button vertically */
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+
+    &:focus {
+      border-color: #0095f6; /* Insta blue */
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 149, 246, 0.3);
+    }
+  }
+
+  button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #0095f6; /* Instagram blue */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+      background: #0077cc;
+    }
+  }
+}
+a{
+    padding-top: 20px;
+    text-decoration: none;
+    color: #726a6a;
+}

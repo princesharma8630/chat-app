@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-signup',
-  imports: [CommonModule , ReactiveFormsModule , FormsModule],
+  imports: [CommonModule , ReactiveFormsModule , FormsModule, RouterModule],
   templateUrl: './signup.html',
   styleUrl: './signup.scss'
 })

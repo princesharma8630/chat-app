@@ -21,7 +21,14 @@ export class MessageList implements OnInit {
     const messagesRef = collection(this.firestore, 'messages');
     const q = query(messagesRef, orderBy('createdAt'));
     collectionData(q, { idField: 'id' }).subscribe(data => {
-      this.messages = data;
+      if(this.messages.length===0){
+        this.messages=data ;
+      }
+     else{
+      const newMsgs = data.filter(d=>!this.messages.find(m=>m.id===d.id));
+      this.messages.push(...newMsgs);
+      
+     }
     });
   }
 }

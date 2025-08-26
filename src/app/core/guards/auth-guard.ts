@@ -14,6 +14,7 @@ return new Promise<boolean>((resolve)=>{
     unsubscribe();
       if(user){
     console.log('Guard : user logged in' , user.uid);
+    resolve(true);
   }
   else{
     console.log("Guard : user not logged in-> redirect");

@@ -6,9 +6,9 @@ import { authGuard } from './core/guards/auth-guard';
 import { ChatShell } from './pages/chat/chat-shell/chat-shell';
 
 export const routes: Routes = [
-    {path:'chat' , component:ChatShell},
+    {path:'chat' , component:ChatShell , canActivate:[authGuard]},
      { path: 'signup', component: Signup },
-  { path: '', redirectTo: 'signup', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'profile-setup' , component:ProfileSetup},
   {path:'login' , component:Login},
 

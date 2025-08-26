@@ -49,7 +49,7 @@ export class App implements OnInit { // <-- implement OnInit
       console.error('❌ Firebase NOT connected:', err);
     }
       
-   this.login('prince123@gmail.com' , 'p1231232');
+  
   }
 
 
