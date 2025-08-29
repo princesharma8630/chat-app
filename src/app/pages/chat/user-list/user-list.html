@@ -1,0 +1,18 @@
+<div class="p-3">
+  <h2 class="text-lg font-semibold mb-2">Users</h2>
+  <ul>
+    <li *ngFor="let user of (users$ | async)">
+      <button
+        *ngIf="user.uid !== currentUid"
+        class="w-full text-left p-2 rounded hover:bg-gray-100 border-b"
+        (click)="onUserSelect(user)"
+        aria-label="Open chat with {{ user.displayName || user.email }}"
+      >
+        <span class="inline-flex items-center gap-2">
+          <img *ngIf="user.photoURL" [src]="user.photoURL" alt="" class="w-8 h-8 rounded-full">
+          <span>{{ user.displayName || user.email }}</span>
+        </span>
+      </button>
+    </li>
+  </ul>
+</div>

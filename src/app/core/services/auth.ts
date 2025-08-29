@@ -11,6 +11,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
   providedIn: 'root',
 })
 export class AuthService {
+  
+constructor(private auth: Auth,private storage:Storage , private firestore: Firestore , private router :Router) {}
 
 
   // loin ke liye 
@@ -31,7 +33,7 @@ export class AuthService {
       throw err;
      }
   }
-  constructor(private auth: Auth,private storage:Storage , private firestore: Firestore , private router :Router) {}
+  
 
   // ✅ Ye function Signup ke liye hona chahiye
   async signUp(email: string, password: string) {

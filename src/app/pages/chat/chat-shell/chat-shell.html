@@ -1,17 +1,19 @@
 <div class="chat-container">
-  
   <aside class="sidebar">
+    <div class="search" routerLink="/userlist">
+          <a routerLink="userlist">Search here </a>
+    </div>
     <app-conversation-list></app-conversation-list>
-     <div class="profile" [routerLink]="['/profile-setup']">
-  <img *ngIf="photoUrl" [src]="photoUrl" alt="Profile" class="profile-img">
-  <span>{{ username }}</span>
-  
-</div>
-   
+    
+    <div class="profile" [routerLink]="['/profile-setup']">
+      <img *ngIf="photoUrl" [src]="photoUrl" alt="Profile" class="profile-img">
+      <span>{{ profile?.displayName || 'User'}}</span>
+    </div>
   </aside>
 
   <main class="main-chat">
+  
     <app-message-list></app-message-list>
-   <div></div> <app-message-input></app-message-input>
+    <app-message-input></app-message-input>
   </main>
 </div>

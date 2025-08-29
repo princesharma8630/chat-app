@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { ConversationList } from '../conversation-list/conversation-list';
 import { MessageList } from '../message-list/message-list';
 import { MessageInput } from '../message-input/message-input';
 import { CommonModule } from '@angular/common';
 import { Auth } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ProfileService } from '../../../core/services/profileservice/profile';
+import { UserList } from '../user-list/user-list';
 
 
 @Component({
@@ -16,17 +18,23 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './chat-shell.scss'
 })
 export class ChatShell {
-  username ='';
-  photoUrl ='';
-  constructor(private firestore :Firestore , private auth:Auth){}
-  ngOnInit(){
-     const user = this.auth.currentUser;
-    if (user) {
-      const userDoc = doc(this.firestore, 'users', user.uid);
-      docData(userDoc).subscribe((data: any) => {
-        this.username = data.displayName;
-        this.photoUrl = data.photoURL;
-      });
+   profile:any=null;
+   photoUrl:any=null;
+  constructor(private firestore :Firestore ,
+     private auth:Auth , 
+     private profileService:ProfileService ,
+      private routes :Router,
+    ){}
+  async ngOnInit(){
+    try {
+    this.profile = await this.profileService.getProfile();
+    console.log('Current user profile:', this.profile);
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+  }
+  }
+  onUserList(){
+    this.routes.navigate(['/userlist']);
   }
 
-}}
+}

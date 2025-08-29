@@ -1,20 +1,70 @@
-.message-list {
+
+.container{
+   margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
+  background: #0d2033;
  
-  gap: 10px; /* messages ke beech spacing */
-  padding: 15px;
-  height: calc(100vh - 120px); /* input box aur header ke liye jagah chhod ke */
-  overflow-y: auto; /* scrolling enable */
-  background-color: #f9f9f9;
 
-
-  /* Scrollbar styling (optional) */
+}
+// Simple Message List Styles
+.message-list {
+  flex: 1;
+  // max-height: 0;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  padding-bottom: 90px; // Space for fixed input
+  position: relative;
+  z-index: 1;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  
+  
+  // Custom scrollbar
   &::-webkit-scrollbar {
     width: 6px;
   }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   &::-webkit-scrollbar-thumb {
-    background: #bbb;
-    border-radius: 4px;
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 3px;
+  }
+
+  // Message items
+  app-message-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+// Auto-scroll class for new messages
+.message-list.auto-scroll {
+  scroll-behavior: auto; // Instant scroll for new messages
+}
+
+// Responsive design
+@media (max-width: 640px) {
+  .message-list {
+    padding: 1rem;
+    padding-bottom: 80px;
+  }
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  .message-list {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(71, 85, 105, 0.4);
+    }
   }
 }

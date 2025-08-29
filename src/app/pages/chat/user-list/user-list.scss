@@ -1,0 +1,314 @@
+// Modern User List Styles
+.p-3 {
+  padding: 1.5rem;
+  // max-width: 28rem;
+  // margin: 0 auto;
+  background: linear-gradient(135deg,  #0f172a 0%, #0f172a 100%);
+  min-height: 100vh;
+  
+  width: 100%;
+  background-color: #0f172a;
+  display: flex;
+ align-items: center;
+  flex-direction: column;
+}
+
+// Header styling
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 2px;
+  }
+}
+
+// Users list container
+ul {
+ 
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  
+}
+
+li {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Modern button styling
+button {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+  // Hover effects
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 0 1px rgba(99, 102, 241, 0.05);
+    
+    .inline-flex {
+      span:last-child {
+        color: #6366f1;
+        font-weight: 600;
+      }
+    }
+    
+    // Hover shine effect
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+
+  // Active state
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Shine effect overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: transform 0.6s;
+    z-index: 1;
+  }
+}
+
+// User info container
+.inline-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+
+  // Profile image styling
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+
+    // Add online indicator
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border: 2px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+      animation: pulse 2s infinite;
+    }
+  }
+
+  // Fallback avatar for users without photos
+  .avatar-fallback {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border: 2px solid white;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  // User name and email container
+  span:last-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+    transition: all 0.3s ease;
+    
+    // User name
+    .user-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.3s ease;
+    }
+    
+    // Email
+    .user-email {
+      font-size: 0.875rem;
+      color: #64748b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // Last seen status
+    .last-seen {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 0.125rem;
+    }
+  }
+}
+
+// Pulse animation for online indicator
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+// Add a subtle pattern overlay
+.p-3::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// Ensure content is above the pattern
+ul {
+  position: relative;
+  z-index: 1;
+}
+
+// Responsive design
+@media (max-width: 640px) {
+  .p-3 {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  button {
+    padding: 0.875rem;
+  }
+  
+  .inline-flex {
+    gap: 0.625rem;
+    
+    img, .avatar-fallback {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .p-3 {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+  
+  h2 {
+    color: #f8fafc;
+  }
+  
+  button {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(51, 65, 85, 0.8);
+    color: #f8fafc;
+    
+    &:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+  }
+  
+  .inline-flex span:last-child {
+    .user-name {
+      color: #f8fafc;
+    }
+    
+    .user-email {
+      color: #94a3b8;
+    }
+    
+    .last-seen {
+      color: #64748b;
+    }
+  }
+}
