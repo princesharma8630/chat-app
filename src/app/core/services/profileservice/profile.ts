@@ -44,3 +44,4 @@ export class ProfileService {
   
  
 }
+export class Profile{}

@@ -459,3 +459,10 @@ app-message-input {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
+
+app-receiver-p{
+  background-color: #0f172a;
+  height: 50px;
+  width: 100%;
+  color: white;
+}

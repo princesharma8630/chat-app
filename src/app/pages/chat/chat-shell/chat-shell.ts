@@ -9,11 +9,12 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../../core/services/profileservice/profile';
 import { UserList } from '../user-list/user-list';
+import { ReceiverP } from '../receiver-p/receiver-p';
 
 
 @Component({
   selector: 'app-chat-shell',
-  imports: [ConversationList, MessageList, MessageInput, CommonModule,RouterModule , FormsModule],
+  imports: [ConversationList, MessageList, MessageInput, CommonModule,RouterModule , FormsModule , ReceiverP],
   templateUrl: './chat-shell.html',
   styleUrl: './chat-shell.scss'
 })

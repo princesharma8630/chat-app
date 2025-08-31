@@ -1,29 +1,50 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Route, Router, RouterModule } from '@angular/router';
-import { user } from '@angular/fire/auth';
+import { Router, RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CommonModule , RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrls: ['./login.scss']
 })
 export class Login {
- email = '';
-  password = '';
+  // ✅ FormBuilder se form banao
+ loginForm!: FormGroup;
 
-  constructor(private authService: AuthService , private router:Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
+
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+  
   async onLogin() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched(); // show all errors
+      return;
+    }
+
+    const { email, password } = this.loginForm.value;
+
     try {
-      await this.authService.login(this.email, this.password);
-      alert('Login successful!');
-       this.router.navigate(['/chat']);
+      await this.authService.login(email!, password!);
+      this.router.navigate(['/chat']);
     } catch (err) {
       console.error('❌ Login error:', err);
     }
+  }
+  gotosignup(){
+    this.router.navigate(['/signup']);
   }
 }

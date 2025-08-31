@@ -1,9 +1,27 @@
-<div class="login-container">
-  <h2>Login</h2>
 
-  <input type="email" placeholder="Email" [(ngModel)]="email" />
-  <input type="password" placeholder="Password" [(ngModel)]="password" />
+<div class="overlay">
 
-  <button (click)="onLogin()">Login</button>
- <a routerLink="/signup">SignUp</a>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <!-- Email -->
+  <label>Email:</label>
+  <input type="email" formControlName="email" placeholder="Enter your email">
+  <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+    <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+    <span *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email</span>
+  </div>
+
+  <!-- Password -->
+  <label>Password:</label>
+  <input type="password" formControlName="password" placeholder="Enter your password">
+  <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+    <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+    <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button type="button" (click)="gotosignup()">Sign-Up</button>
+</form>
+
 </div>
+

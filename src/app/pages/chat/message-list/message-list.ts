@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./message-list.scss']
 })
 export class MessageList implements OnInit {
-  
+
 
 
 
@@ -31,7 +31,7 @@ export class MessageList implements OnInit {
 
   ngOnInit() {
 
-    
+
 
     const user = this.auth.currentUser;
     if (!user) return;
@@ -39,53 +39,50 @@ export class MessageList implements OnInit {
     // const receiverUid = 'friendUid';  // default friend
     this.route.paramMap.subscribe(params => {
       let receiverUid = params.get('receiverUid');
-      // ye reciver 
-      // i.d fatech kr rha ha link se
-
+      // ye reciver i.d fatech kr rha ha link se
+     
       if (!receiverUid) {
         console.log("receicer id is not found");
         return;
       }
-      
-       console.log("Fetching messages for path:", `users/${senderUid}/chats/${receiverUid}/messages`);  
+
+      console.log("Fetching messages for path:", `users/${senderUid}/chats/${receiverUid}/messages`);
       this.chatservice.getMessages(senderUid, receiverUid).subscribe(data => {
         console.log("data is arriving");
         console.log(data);
-        
+
         if (data.length === 0) {
           this.messages = data;
-          
-
-
         }
         else {
           const newMsgs = data.filter(d => !this.messages.find(m => m.id === d.id));
           this.messages.push(...newMsgs);
-          this.shouldScroll= true;
+          this.shouldScroll = true;
         }
- setTimeout(() => {
-    const messageList = document.querySelector('.message-list') as HTMLElement;
-    console.log("Before scroll:", messageList?.scrollTop, messageList?.scrollHeight);
-    this.scrollToBottom();
-    console.log("After scroll:", messageList?.scrollTop, messageList?.scrollHeight);
-  }, 0);      });
+        setTimeout(() => {
+          const messageList = document.querySelector('.message-list') as HTMLElement;
+          console.log("Before scroll:", messageList?.scrollTop, messageList?.scrollHeight);
+          this.scrollToBottom();
+          console.log("After scroll:", messageList?.scrollTop, messageList?.scrollHeight);
+        }, 0);
+      });
 
     });
-  
+
   }
   private scrollToBottom() {
-  const messageList = document.querySelector('.message-list') as HTMLElement;
-  if (messageList) {
-    messageList.scrollTop = messageList.scrollHeight;
-    console.log("Trying scrollToBottom →", {
-      clientHeight: messageList.clientHeight,
-      scrollHeight: messageList.scrollHeight,
-      scrollTop: messageList.scrollTop
-    });
-  } else {
-    console.log("⚠️ .message-list not found!");
+    const messageList = document.querySelector('.message-list') as HTMLElement;
+    if (messageList) {
+      messageList.scrollTop = messageList.scrollHeight;
+      console.log("Trying scrollToBottom →", {
+        clientHeight: messageList.clientHeight,
+        scrollHeight: messageList.scrollHeight,
+        scrollTop: messageList.scrollTop
+      });
+    } else {
+      console.log("⚠️ .message-list not found!");
+    }
   }
-}
 
 
 

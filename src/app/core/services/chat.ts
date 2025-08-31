@@ -32,8 +32,7 @@ export class Chat {
   console.log("messae add receiver");
   }
     getMessages(senderUid: string, receiverUid: string): Observable<any[]> {
-  const messagesRef = collection(this.firestore, `users/${receiverUid}/chats/${senderUid}/messages`);
- 
+ const messagesRef = collection(this.firestore, `users/${senderUid}/chats/${receiverUid}/messages`); 
   const q = query(messagesRef, orderBy('createdAt'));
   return collectionData(q, { idField: 'id' }) as Observable<any[]>;
 }

@@ -26,6 +26,10 @@ export class ProfileSetup {
   }
 
   async saveProfile() {
+    if (!this.displayName.trim()) {
+      this.routes.navigate(['/chat']);
+      return;
+    }
     try {
       // ✅ Using ProfileService instead of AuthService
       await this.profileService.saveProfile(this.displayName, this.selectedFile);
