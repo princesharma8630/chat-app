@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-signup',
   imports: [CommonModule , ReactiveFormsModule , FormsModule, RouterModule],
@@ -14,9 +14,12 @@ export class Signup {
  email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService , private route :Router) {}
 
   onSignUp() {
     this.authService.signUp(this.email, this.password);
+     alert("Account created successfully! Please log in.");
+    this.route.navigate(['/login']);
+
 }
 } 

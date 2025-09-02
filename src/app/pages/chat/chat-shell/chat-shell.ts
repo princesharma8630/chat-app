@@ -14,7 +14,7 @@ import { ReceiverP } from '../receiver-p/receiver-p';
 
 @Component({
   selector: 'app-chat-shell',
-  imports: [ConversationList, MessageList, MessageInput, CommonModule,RouterModule , FormsModule , ReceiverP],
+  imports: [ ConversationList,MessageList, MessageInput, CommonModule,RouterModule , FormsModule , ReceiverP ],
   templateUrl: './chat-shell.html',
   styleUrl: './chat-shell.scss'
 })
@@ -36,6 +36,6 @@ export class ChatShell {
   }
   onUserList(){
     this.routes.navigate(['/userlist']);
-  }
 
-}
+
+}}

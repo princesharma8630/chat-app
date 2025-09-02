@@ -42,6 +42,12 @@ export class Login {
       this.router.navigate(['/chat']);
     } catch (err) {
       console.error('❌ Login error:', err);
+      alert('Login failed. Please check your email and password \n try again.');
+      // Optionally, reset the form or specific fields
+      this.loginForm.reset();
+      this.loginForm.get('password')?.reset();
+      // Focus on the email field for user convenience
+      document.getElementById('email')?.focus();
     }
   }
   gotosignup(){

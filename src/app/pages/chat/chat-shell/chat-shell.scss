@@ -251,7 +251,7 @@ app-message-list {
   padding: 1rem 1.5rem;
   position: relative;
   z-index: 1;
- margin-bottom:90px ;
+ margin-bottom:0px ;
 
   // Custom scrollbar styling
   &::-webkit-scrollbar {
@@ -271,21 +271,6 @@ app-message-list {
       background: rgba(148, 163, 184, 0.5);
     }
   }
-}
-
-// Message input positioning
-app-message-input {
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .chat-container {
-    flex-direction: column;
-  }
-
   .sidebar {
     width: 100%;
     height: auto;
@@ -465,4 +450,26 @@ app-receiver-p{
   height: 50px;
   width: 100%;
   color: white;
+}
+
+.search{
+  color: blanchedalmond;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   &:hover{
+    color: rgb(0, 122, 6);
+  }
+}
+
+
+.user-list{
+height: 80%;
+overflow-y: auto;
+overflow-x: hidden;
+max-width: min-content;
+width: 100%;
 }

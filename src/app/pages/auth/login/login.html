@@ -18,8 +18,11 @@
     <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
   </div>
 
+
+
   <!-- Submit -->
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+   
+  <button type="submit" [disabled]="loginForm.invalid" (keydown.enter)="onLogin()">Login</button>
   <button type="button" (click)="gotosignup()">Sign-Up</button>
 </form>
 

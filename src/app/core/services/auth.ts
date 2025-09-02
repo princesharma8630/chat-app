@@ -40,7 +40,7 @@ export class AuthService {
   async signUp(email: string, password: string) {
     const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
     console.log("✅ User created:", userCredential.user.uid);
-
+   
     // 🔥 STORE USER ID IN SESSION STORAGE
     sessionStorage.setItem('currentUserId', userCredential.user.uid);
 
@@ -52,7 +52,6 @@ export class AuthService {
     });
 
     console.log("🔥 User saved in Firestore:", userCredential.user.uid);
-    this.router.navigate(['profile-setup']);
   }
 
   // update the profile

@@ -36,7 +36,6 @@ export class MessageInput{
       // const user = this.auth.currentUser;
       // if(!user) throw new Error("User not logged in");
       // const senderuid = user.uid;
-      const senderuid ='prince pandit';
        await this.chatservice.sendMessage(this.newMessage ,senderUid, this.receiverUid as string);
       
 

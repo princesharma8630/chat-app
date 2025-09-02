@@ -5,5 +5,5 @@
 <div class="message-item" [ngClass]="{ 'own-message':isOwnMessage}">
   <div class="sender">{{displayName}}</div>
   <div class="text">{{ message.text }}</div>
-  <div class="time">{{ message.createdAt | date:'shortTime' }}</div>
+  <div class="time">{{ message.createdAt?.toDate() | date:'shortTime' }}</div>
 </div>

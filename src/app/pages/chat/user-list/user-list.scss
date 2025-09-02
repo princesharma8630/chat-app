@@ -41,7 +41,23 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  width: 100%;
+  width: 85%;
+  max-height: 400px;   // apne hisaab se adjust kar
+  overflow-y: auto;
+  scrollbar-width: thin;          // Firefox
+  scrollbar-color: #6366f1 #0f172a; // Firefox
+
+  // Chrome / Edge custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #6366f1;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
   
 }
 
