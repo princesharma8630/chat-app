@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ProfileService } from '../../../core/services/profileservice/profile';
+import { Auth } from '@angular/fire/auth';
+import { signOut } from 'firebase/auth';
 
 
 @Component({
@@ -15,7 +17,9 @@ export class ProfileSetup {
   displayName = '';
   selectedFile: File | null = null;
 
-  constructor(private profileService: ProfileService, private routes: Router) {}
+  constructor(private profileService: ProfileService,
+     private routes: Router,
+    private auth:Auth) {}
 
   onFileSelected(event: any) {
     const input = event.target as HTMLInputElement;
@@ -39,4 +43,12 @@ export class ProfileSetup {
       console.error('❌ Error updating profile:', err);
     }
   }
+
+ async logoutUser(){
+   await signOut(this.auth); //firenase automatically handles and signuot
+  localStorage.removeItem('currentUserId');
+  alert("Logged out successfully!");
+  this.routes.navigate(['/login']);
+}
+
 }

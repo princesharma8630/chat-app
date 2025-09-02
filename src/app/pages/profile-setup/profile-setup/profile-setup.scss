@@ -86,3 +86,20 @@ a{
 }
 
 
+.logout {
+  margin-top: 10px;
+  padding: 12px;
+  background: #192253;
+  color: #1a1010;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: #211246;
+  }
+}
+

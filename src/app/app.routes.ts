@@ -7,15 +7,17 @@ import { ChatShell } from './pages/chat/chat-shell/chat-shell';
 import { UserList } from './pages/chat/user-list/user-list';
 
 export const routes: Routes = [
-    {path:'chat' , component:ChatShell , canActivate:[authGuard]},
-     { path: 'signup', component: Signup },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path:'profile-setup' , component:ProfileSetup},
-  {path:'login' , component:Login},
-  {path:'userlist' , component:UserList},
-  {
-    path:'chat/:receiverUid' , component:ChatShell
-  },
+  { path: 'chat', component: ChatShell, canActivate: [authGuard] },
+  { path: 'signup', component: Signup },
 
-    
+  { path: 'profile-setup', component: ProfileSetup , canActivate: [authGuard] },
+  { path: 'login', component: Login },
+  { path: 'userlist', component: UserList , canActivate: [authGuard] },
+  {
+    path: 'chat/:receiverUid', component: ChatShell
+  },
+  { path: '', canActivate: [authGuard]  , component:ChatShell},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+
 ];

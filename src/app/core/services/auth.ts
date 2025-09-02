@@ -21,7 +21,7 @@ export class AuthService {
       console.log("user logged in", userCredential.user.email, userCredential.user.uid);
       
       // 🔥 STORE USER ID IN SESSION STORAGE (tab-specific solution)
-      sessionStorage.setItem('currentUserId', userCredential.user.uid);
+      localStorage.setItem('currentUserId', userCredential.user.uid);
       
       // Optional: user Firestore document fetch karna
       const userDoc = doc(this.firestore, 'users', userCredential.user.uid);
@@ -42,7 +42,7 @@ export class AuthService {
     console.log("✅ User created:", userCredential.user.uid);
    
     // 🔥 STORE USER ID IN SESSION STORAGE
-    sessionStorage.setItem('currentUserId', userCredential.user.uid);
+    localStorage.setItem('currentUserId', userCredential.user.uid);
 
     // Firestore me user save karo
     await setDoc(doc(this.firestore, 'users', userCredential.user.uid), {
@@ -79,7 +79,7 @@ export class AuthService {
 
   // 🔥 NEW METHOD: Get current user ID from session storage (tab-specific)
   getCurrentUserId(): string {
-    return sessionStorage.getItem('currentUserId') || '';
+    return localStorage.getItem('currentUserId') || '';
   }
 
   // 🔥 NEW METHOD: Logout and clear session
