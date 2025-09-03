@@ -14,12 +14,25 @@ import { signOut } from 'firebase/auth';
   styleUrls: ['./profile-setup.scss']
 })
 export class ProfileSetup {
-  displayName = '';
+  displayName:any = '';
   selectedFile: File | null = null;
+  userProfile:any=null;
 
   constructor(private profileService: ProfileService,
      private routes: Router,
     private auth:Auth) {}
+
+    async ngOnInit(){
+    try {
+    this.userProfile= await this.profileService.getProfile();
+    console.log('Current user profile:', this.profileService);
+    this.displayName=this.userProfile?.displayName || '';
+    this.selectedFile=this.userProfile?.photoURL || null;
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+  }
+  }
+
 
   onFileSelected(event: any) {
     const input = event.target as HTMLInputElement;
@@ -50,5 +63,6 @@ export class ProfileSetup {
   alert("Logged out successfully!");
   this.routes.navigate(['/login']);
 }
+
 
 }

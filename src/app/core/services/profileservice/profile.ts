@@ -41,6 +41,21 @@ export class ProfileService {
       return null;
     }
   }
+  async getName() {
+    const user = this.auth.currentUser;
+    if (!user) throw new Error("User not logged in");
+
+    const userDocRef = doc(this.firestore, 'users', user.uid);
+    const snapshot = await getDoc(userDocRef);
+    if (snapshot.exists()) {
+      
+      const data =snapshot.data();
+      return data['displayName'] || null;
+      
+    } else {
+      return null;
+    }
+  }
   
  
 }

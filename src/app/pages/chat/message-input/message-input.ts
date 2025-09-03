@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
-import { Chat } from '../../../core/services/chat';
+import { Chat } from '../../../core/services/chat/chat';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 

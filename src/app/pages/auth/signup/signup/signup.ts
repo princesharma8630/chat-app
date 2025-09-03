@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../../../core/services/auth';
+import { AuthService } from '../../../../core/services/auth/auth';
 import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-signup',

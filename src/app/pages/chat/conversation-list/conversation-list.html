@@ -1,25 +1,59 @@
-<div class="conversation-list">
-  <h2>Conversations</h2>
-
-  <!-- agar koi conversation na ho -->
-  <div *ngIf="conversations().length === 0" class="empty">
-    No conversations yet.
+<div class="conversation-list-container">
+  <div class="conversation-header">
+    <h2>Chats</h2>
+    <button class="refresh-btn" (click)="refreshConversations()" [disabled]="loading()">
+      <span [class.spinning]="loading()">⟳</span>
+    </button>
   </div>
 
-  <!-- list of conversations -->
-  <ul>
-    <li *ngFor="let convo of conversations()">
-      <div class="convo-item">
-        <div class="participants">
-          👥 {{ convo.participants.join() || 'Unknown' }}
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading conversations...</p>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading() && conversations().length === 0" class="empty-state">
+    <div class="empty-icon">💬</div>
+    <h3>No conversations yet</h3>
+    <p>Start a conversation to see it here</p>
+  </div>
+
+  <!-- Conversations List -->
+  <div *ngIf="!loading() && conversations().length > 0" class="conversations-list">
+    <div 
+      *ngFor="let conversation of conversations(); trackBy: trackByUserId" 
+      class="conversation-item"
+      (click)="openChat(conversation)"
+    >
+      <div class="conversation-avatar">
+        <img 
+          *ngIf="conversation.user?.photoURL; else defaultAvatar" 
+          [src]="conversation.user?.photoURL" 
+          [alt]="getDisplayName(conversation.user)"
+          class="avatar-img"
+        >
+        <ng-template #defaultAvatar>
+          <div class="default-avatar">
+            {{ getDisplayName(conversation.user).charAt(0).toUpperCase() }}
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="conversation-content">
+        <div class="conversation-header-row">
+          <h3 class="user-name">{{ getDisplayName(conversation.user) }}</h3>
+          <span class="message-time">{{ getLastMessageTime(conversation.lastMessageTime) }}</span>
         </div>
+        
         <div class="last-message">
-          💬 {{ convo.lastMessage || 'No messages yet' }}
-        </div>
-        <div class="time">
-          🕒 {{ convo.updatedAt?.toDate() | date:'short' }}
+          <span class="message-text">{{ getLastMessageText(conversation.lastMessage) }}</span>
         </div>
       </div>
-    </li>
-  </ul>
+
+      <div class="conversation-arrow">
+        <span>›</span>
+      </div>
+    </div>
+  </div>
 </div>

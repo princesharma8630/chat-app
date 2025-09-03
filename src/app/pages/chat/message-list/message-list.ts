@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MessageItem } from '../message-item/message-item';
-import { Chat } from '../../../core/services/chat';
+import { Chat } from '../../../core/services/chat/chat';
 import { Auth } from '@angular/fire/auth';
 import { ProfileService } from '../../../core/services/profileservice/profile';
 import { ActivatedRoute } from '@angular/router';

@@ -37,5 +37,4 @@ export class ChatShell {
   onUserList(){
     this.routes.navigate(['/userlist']);
 
-
 }}
